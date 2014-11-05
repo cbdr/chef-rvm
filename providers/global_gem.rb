@@ -97,3 +97,4 @@ def update_global_gems_file(exec_action)
     new_resource.updated_by_last_action(true) if e.updated_by_last_action?
   end
 end
+end
