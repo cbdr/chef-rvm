@@ -47,6 +47,7 @@ private
 # @param [Symbol] action to be performed with gem_package provider
 # @param [optional, String, #to_s] the fully qualifed rvm string
 def gem_package_wrapper(exec_action, ruby_global_gemset)
+  if !ruby_global_gemset.downcase.include?('welcome')
   g = rvm_gem new_resource.package_name do
     ruby_string ruby_global_gemset
     source      new_resource.source if new_resource.source
@@ -56,6 +57,7 @@ def gem_package_wrapper(exec_action, ruby_global_gemset)
     user        new_resource.user
     action      :nothing
   end
+  enc
   g.run_action(exec_action)
   new_resource.updated_by_last_action(true) if g.updated_by_last_action?
 end
