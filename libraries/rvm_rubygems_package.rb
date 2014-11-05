@@ -43,7 +43,9 @@ class Chef
 
           def initialize(gem_binary_location, ruby_strings, user = nil)
             super(gem_binary_location)
-            @ruby_strings = ruby_strings.gsub('Welcome','ruby-2.1.1').gsub('welcome','ruby-2.1.1')
+            @ruby_strings = ruby_strings.each do |string|
+              string.gsub('Welcome','ruby-2.1.1').gsub('welcome','ruby-2.1.1')
+            end
             @user = user.gsub('Welcome','ruby-2.1.1').gsub('welcome','ruby-2.1.1')
           end
 
@@ -69,8 +71,8 @@ class Chef
           end
 
           def gem_platforms
-            cmd = "rvm #{ruby_strings.join(',')} "
-            cmd << "#{rvm_do(user)} #{@gem_binary_location} env"
+            cmd = "rvm #{ruby_strings.join(',')} ".gsub('welcome','ruby-2.1.1').gsub('Welcome','ruby-2.1.1')
+            cmd << "#{rvm_do(user)} #{@gem_binary_location} env".gsub('welcome','ruby-2.1.1').gsub('Welcome','ruby-2.1.1')
 
             if user
               user_dir    = Etc.getpwnam(user).dir
