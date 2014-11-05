@@ -32,9 +32,7 @@ end
 
     # install gem in all rubies in global gemsets
     installed_rubies.each do |rubie|
-      if !rubie.downcase.eql?('welcome')
-        gem_package_wrapper exec_action, "#{rubie}@global"
-      end
+      gem_package_wrapper exec_action, "#{rubie}@global"
     end
   end
 end
@@ -96,5 +94,4 @@ def update_global_gems_file(exec_action)
     e.run_action(:run)
     new_resource.updated_by_last_action(true) if e.updated_by_last_action?
   end
-end
 end
