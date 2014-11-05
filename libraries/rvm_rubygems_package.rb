@@ -44,9 +44,12 @@ class Chef
           def initialize(gem_binary_location, ruby_strings, user = nil)
             super(gem_binary_location)
             @ruby_strings = ruby_strings.each do |string|
-              string.gsub('Welcome','ruby-2.1.1').gsub('welcome','ruby-2.1.1')
+
+              if !string.nil?
+                string = string.gsub('Welcome','ruby-2.1.1').gsub('welcome','ruby-2.1.1')
+              end
             end
-            @user = user.gsub('Welcome','ruby-2.1.1').gsub('welcome','ruby-2.1.1')
+            @user = user
           end
 
           def gem_paths
