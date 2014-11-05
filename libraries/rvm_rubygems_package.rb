@@ -131,12 +131,14 @@ class Chef
         def install_package(name, version)
           # ensure each ruby is installed and gemset exists
           ruby_strings.each do |rubie|
-            next if rubie == 'system'
-            e = rvm_environment rubie do
-              user    gem_env.user if gem_env.user
-              action :nothing
+            if !rubie.eql?('Welcome') && !rubie.eql?('root') 
+              next if rubie == 'system'
+              e = rvm_environment rubie do
+                user    gem_env.user if gem_env.user
+                action :nothing
+              end
+              e.run_action(:create)
             end
-            e.run_action(:create)
           end
 
           install_via_gem_command(name, version)
