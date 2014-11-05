@@ -32,7 +32,11 @@ end
 
     # install gem in all rubies in global gemsets
     installed_rubies.each do |rubie|
-      gem_package_wrapper exec_action, "#{rubie}@global"
+      if rubie.eql?('Welcome') || rubie.eql?('root')
+        gem_package_wrapper exec_action, "#{node['rvm']['system_ruby']}@global"
+      else
+        gem_package_wrapper exec_action, "#{rubie}@global"
+      end
     end
   end
 end
