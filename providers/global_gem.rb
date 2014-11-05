@@ -57,7 +57,7 @@ def gem_package_wrapper(exec_action, ruby_global_gemset)
     user        new_resource.user
     action      :nothing
   end
-  enc
+  end
   g.run_action(exec_action)
   new_resource.updated_by_last_action(true) if g.updated_by_last_action?
 end
