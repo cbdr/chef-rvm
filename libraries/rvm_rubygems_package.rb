@@ -46,15 +46,15 @@ class Chef
             @ruby_strings = ruby_strings.each do |string|
 
               if !string.nil?
-                string = string.gsub('Welcome','ruby-2.1.1').gsub('welcome','ruby-2.1.1')
+                string = string.gsub('Welcome','ruby-2.1.1').gsub('root','ruby-2.1.1')
               end
             end
             @user = user
           end
 
           def gem_paths
-            cmd = "rvm #{ruby_strings.join(',')} ".gsub('Welcome','ruby-2.1.1').gsub('welcome','ruby-2.1.1')
-            cmd << "#{rvm_do(user)} #{@gem_binary_location} env gempath".gsub('Welcome','ruby-2.1.1').gsub('welcome','ruby-2.1.1')
+            cmd = "rvm #{ruby_strings.join(',')} ".gsub('Welcome','ruby-2.1.1').gsub('root','ruby-2.1.1')
+            cmd << "#{rvm_do(user)} #{@gem_binary_location} env gempath".gsub('Welcome','ruby-2.1.1').gsub('root','ruby-2.1.1')
 
 
             if user
@@ -74,8 +74,8 @@ class Chef
           end
 
           def gem_platforms
-            cmd = "rvm #{ruby_strings.join(',')} ".gsub('welcome','ruby-2.1.1').gsub('Welcome','ruby-2.1.1')
-            cmd << "#{rvm_do(user)} #{@gem_binary_location} env".gsub('welcome','ruby-2.1.1').gsub('Welcome','ruby-2.1.1')
+            cmd = "rvm #{ruby_strings.join(',')} ".gsub('root','ruby-2.1.1').gsub('Welcome','ruby-2.1.1')
+            cmd << "#{rvm_do(user)} #{@gem_binary_location} env".gsub('root','ruby-2.1.1').gsub('Welcome','ruby-2.1.1')
 
             if user
               user_dir    = Etc.getpwnam(user).dir
