@@ -17,6 +17,16 @@
 # limitations under the License.
 #
 
+bash "download gpg keys" do
+  Chef::Log.debug "======================> running the gpg command <========================="
+  code <<-EOH
+  sudo gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
+  EOH
+end
+
+
+
+
 include_recipe "rvm::system_install"
 
 perform_install_rubies  = node['rvm']['install_rubies'] == true ||

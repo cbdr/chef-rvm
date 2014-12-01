@@ -16,11 +16,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
 # install rvm api gem during chef compile phase
 chef_gem 'rvm' do
   action :install
-  version '>= 1.11.3.6'
+  version '>= 1.11.3.5'
 end
 require 'rvm'
 
