@@ -30,4 +30,6 @@ if node['rvm']['group_id'] != 'default'
   g.run_action(:create)
 end
 
-rvm_installation("root")
+rvm_installation("root") do
+  installer_url "https://raw.githubusercontent.com/wayneeseguin/rvm/master/binscripts/rvm-installer"
+end
