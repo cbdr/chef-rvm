@@ -42,7 +42,7 @@ default['rvm']['user_gems'] = Hash.new
 default['rvm']['rvmrc_env'] = { "rvm_gem_options" => "--no-ri --no-rdoc" }
 
 # a hash of user hashes, each an isolated per-user RVM installation
-default['rvm']['installs'] = Hash.new
+default['rvm']['installs'] = {"installer_url" => "https://raw.githubusercontent.com/wayneeseguin/rvm/master/binscripts/rvm-installer"}
 # system-wide installer options
 default['rvm']['installer_url']   = "https://raw.githubusercontent.com/wayneeseguin/rvm/master/binscripts/rvm-installer"
 default['rvm']['installer_flags'] = "stable"
